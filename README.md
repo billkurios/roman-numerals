@@ -1,17 +1,26 @@
-# NOMBRES ROMAINS
+# ROMAN NUMBERS
 
-Ce package permet la conversion des nombres numériques en nombres romains.
+This package helps us to get roman number from a numeric given number.
+
 
 ## Installation
 
-Cloner le repertoire git sur votre machine
+Clone the repository on your machine
 
 ```shell
 $ git clone https://github.com/billkurios/roman-numerals.git
 ```
 
-## Conversion de nombres
+## Number conversion
 
+Just type
 ```shell
 $ python roman_numerals.py [numb_1] [numb_2] ... [numb_n]
 ```
+
+## License
+
+MIT
+
+## Note
+For more information about roman numbers, go the [https://www.romannumerals.org/converter](https://www.romannumerals.org/converter)
