@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import List
 from sys import argv
+import unittest
 
 
 @dataclass
@@ -68,7 +69,7 @@ class RomanNumerals:
                 ))
             elif item.weight == 4:
                 result.append(PowerTenDecompositionItem(
-                    1, item.power_ten * 5, item.power_ten * 5
+                    1, item.power_ten * 5, item.power_ten
                 ))
             elif item.weight >= 5:
                 result.append(PowerTenDecompositionItem(1, item.power_ten * 5))
@@ -96,6 +97,24 @@ class RomanNumerals:
         return result
 
 
+class TestComputeRomanNumberMethod(unittest.TestCase):
+    def test_easy(self):
+        self.assertEqual(RomanNumerals.compute_roman_number(13), 'XIII')
+        self.assertEqual(RomanNumerals.compute_roman_number(3), 'III')
+        self.assertEqual(RomanNumerals.compute_roman_number(6), 'VI')
+
+    def test_medium(self):
+        self.assertEqual(RomanNumerals.compute_roman_number(123), 'CXXIII')
+        self.assertEqual(RomanNumerals.compute_roman_number(666), 'DCLXVI')
+        self.assertEqual(RomanNumerals.compute_roman_number(238), 'CCXXXVIII')
+
+    def test_harder(self):
+        self.assertEqual(RomanNumerals.compute_roman_number(945), 'CMXLV')
+        self.assertEqual(RomanNumerals.compute_roman_number(2996), 'MMCMXCVI')
+        self.assertEqual(RomanNumerals.compute_roman_number(2496), 'MMCDXCVI')
+        self.assertEqual(RomanNumerals.compute_roman_number(1947), 'MCMXLVII')
+
+
 def main(arguments):
     '''
     This function returns the roman numbers of the given numeric numbers.
@@ -103,8 +122,7 @@ def main(arguments):
     '''
 
     if len(set(arguments) & {"-H", "-h", "--help"}) != 0:
-        print(main.__doc__)
-        return
+        return print(main.__doc__)
     try:
         numbers = [int(arg) for arg in arguments]
     except ValueError:
