@@ -96,7 +96,25 @@ class RomanNumerals:
         return result
 
 
+def main(arguments):
+    '''
+    This function returns the roman numbers of the given numeric numbers.
+    $ python roman_numerals [numb_1] [numb_2] ... [numb_n]
+    '''
+
+    if len(set(arguments) & {"-H", "-h", "--help"}) != 0:
+        print(main.__doc__)
+        return
+    try:
+        numbers = [int(arg) for arg in arguments]
+    except ValueError:
+        print("Uniquement les nombres entiers sont requis")
+        return
+    for number in numbers:
+        print("%s => %s" % (number, RomanNumerals.compute_roman_number(number)))
+
+
 if __name__ == "__main__":
-    # numbers = [int(item) for item in argv[1:]]
-    # print(numbers)
-    pass
+    main(argv[1:])
+    
+    
